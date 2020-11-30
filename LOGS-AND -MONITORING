@@ -1,0 +1,6 @@
+logs can be maintained based on the commands and tools
+
+jira tool can be used to maintain and manage whole process remotely.
+there will be certain commands used to maintain logs even in git which can be execued with teh respective CLI.
+
+monitoring will be done with the help of prometheus and grafana based on metrics. grafana is more elaborative than grafana.

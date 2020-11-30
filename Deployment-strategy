@@ -1,0 +1,6 @@
+planning, designing, coding will be done based on the project given by the custome to the scrum master.
+after developer part the code was forwarded to testing team where the application test stage will be done.
+after the testing the the process forwarded for UAT deployment where jenkins type of automation tool will be user to which some other tools will be integrated for based on the requirement.
+jenkins pipeline will be created with different stages and executed upon server.
+if the uat process was accomplished the the whole gatheres accomplishment will be forwarded to production team.
+production team will then perform the required tash to maintain application in to live environment.

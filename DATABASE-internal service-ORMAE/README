@@ -1,0 +1,11 @@
+   # The below commands user to find the secure usermane and password from the kubernetes cli end which was given in secret.yaml file. 
+    echo -n 'username' | base64
+    echo -n 'username' | base64
+
+
+    kubectl apply -f Mongodb-secretfile.yaml
+    kubectl get secret
+    kubectl apply -f Mongodb-deployment.yaml
+    kubectl get all
+    kubectl get service
+    kubectl get pods -o wide

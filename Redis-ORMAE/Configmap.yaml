@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  Redis-config: 
+    bind 0.0.0.0
+kind: Configmap
+metadata:
+  labels:
+    name: ORMAE-Redis-configmap
+  name: ORMAE-Redis

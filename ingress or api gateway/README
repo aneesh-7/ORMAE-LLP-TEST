@@ -1,0 +1,5 @@
+kubectl apply -f ORMAE-ingress.yaml
+
+add the domain in the host file 
+
+

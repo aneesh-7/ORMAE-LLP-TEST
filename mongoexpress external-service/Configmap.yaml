@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Configmap
+metadata:
+  name: ORMAE-mongodb-configmap
+data:
+  database_url: ORMAE-mongodb-service
+
+# databse should be the service of the internal database service

@@ -1,0 +1,92 @@
+apiVersion: v1
+kind: service
+metadata: 
+    labels: 
+        name: ORMAE-Redis-service
+        role: service
+    name: ORMAE-Redis
+spec: 
+    ports:
+        - port: 6379
+          targetport: 6379
+    selector:
+        role: Redis-master
+---
+apiVersion: v1
+kind: service
+metadata:
+    labels:
+        name: ORMAE-Redis-sentinal-service
+        role: service
+    name: ORMAE-Redis-sentinal
+spec: 
+    ports: 
+        - port:26379
+          targetport: 26379
+    selector: 
+        role: Redis-sentinal
+---
+apiVersion: apps/v1
+kind: deployment
+metadata: 
+    lables:
+        name: ORMAE-Redis-deployment
+    name: ORMAE-Redis
+spec: 
+    selector:
+        matchlabels:
+            name: ORMAE-Redis
+            role: Redis-master
+    template:
+        metadata:
+            labels:
+                name: ORMAE-Redis
+                role: Redis-master
+        spec:
+            containers:
+            - image: Redis:6.0.9
+              name: ORMAE-Redis
+              env:
+                - name: master
+                  value: "true"
+             ports:
+             - containerport: 6379
+             volumeMounts:
+             - mountpath: /Redis-master-data
+               name: data
+             - mountpath: /Redis-master
+               name: config
+            volumes: 
+            - name: data
+              emptydir: {}
+            - name: config
+              configMap: 
+                name: ORMAE-Redis
+                items:
+                - key: Redis-config
+                  path: Redis.conf
+---
+apiVersion: apps/v1
+kind: deployment
+metadata: 
+    labels:
+        name: ORMAE-Redis-sentinal-deployment
+    name: ORMAE-Redis-sentinal
+spec:
+    selector:
+        matchlables:
+            name: ORMAE-Redis-sentinal
+    template:
+        metadata:
+            labels:
+                name: ORMAE-Redis-sentinal
+                role: Redis-sentinal
+        spec:
+            containers:
+                - image: Redis:6.0.9
+                  name: ORMAE-Redis-sentinal
+                  env:
+                    - name: sentinal
+                      value: "true"
+                  ports:
+                  - containerport: 26379

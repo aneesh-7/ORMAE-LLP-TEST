@@ -1,0 +1,8 @@
+# here integrating mongoexpress with mongo database by authenticating mongoexpress with mongo db for internal and external service connetion.
+
+kubectl apply -f Configmap.yaml
+kubectl apply -f Mongoexpress-deployment.yaml
+
+minikube-service mongo-express-service
+
+use the external service ip and port to access the application publicly.

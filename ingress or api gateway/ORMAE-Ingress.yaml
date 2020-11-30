@@ -1,0 +1,50 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ORMAE-external-ingress
+  namespace: ORMAE-dashboard
+spec:
+  rules:
+  - host: ormae.com   #valid domain address and map domain name to node's ip address
+    http:
+      paths: 
+      - backend:
+          serviceName: ORMAE-mongodb-service
+          servicePort: 8081
+---        
+#  or you can rewrite the targets by giving the different path with different servicename and service path.
+# with the above point we can create microservices with respect to different services.
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ORMAE-external-ingress
+annotations: 
+  nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: ormae.com
+    http:
+      paths: /supply-chain-and-logistics
+      - backend:
+          serviceName: suppychain-and-logistics-service   #should create and include the suppychain-and-logistics-service 
+          servicePort: 3000
+
+---
+  #or
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ORMAE-external-ingress
+annotations: 
+  nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: ormae.com
+    http:
+      paths: /workforce-optimisation
+      - backend:
+          serviceName: workforce-optimisation-service   #should create and include the workforce-optimisation-service 
+          servicePort: 3000
+
+#and so on

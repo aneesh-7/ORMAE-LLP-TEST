@@ -1,0 +1,7 @@
+kubectl create -f configmap.yaml
+kubectl create -f deployment.yaml
+kubectl get all
+
+
+
+After running the above commands you can verify the running pods, services, configmap, deployments, etc in the respective kubernetes ui site.

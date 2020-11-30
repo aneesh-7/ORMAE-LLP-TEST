@@ -1,0 +1,8 @@
+public request
+goes to aws cloud loadbalancer based on traffic request forwarded to reqested external service
+if the traffic is huge then the auto scale will get happen based on the instruction given in configuration
+the request goes to mongoexpress external service
+forwarded to mongo express pod
+then forwarded to mongodb internal service
+finally the request forwarded to mongo db pod
+result will be shown.

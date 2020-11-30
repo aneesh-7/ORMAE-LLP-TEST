@@ -1,6 +1,0 @@
-public request
-request goes to mongoexpress external service
-forwarded to mongo express pod
-then forwarded to mongodb internal service
-finally the request forwarded to mongo db pod
-result will be shown.
